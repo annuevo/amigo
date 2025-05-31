@@ -159,7 +159,7 @@
     for (let i = 0; i < total; i++) {
       const el = document.createElement('div');
       el.className = 'love';
-      el.textContent = '¿Como estas?';
+      el.textContent = '5 cm ';
       el.style.animationDelay = `${Math.random() * 3}s`;
       el.addEventListener('mouseenter', () => {
         el.style.transform = `scale(1.3)`;
@@ -192,7 +192,7 @@
     function spawnText(x, y) {
       const loveText = document.createElement('div');
       loveText.className = 'te-amo';
-      loveText.textContent = 'HAMBRE';
+      loveText.textContent = 'TE QUIERO';
       loveText.style.left = `${x}px`;
       loveText.style.top = `${y}px`;
       document.body.appendChild(loveText);
