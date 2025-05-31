@@ -4,21 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>comida</title>
- 
- <style>
-     body {
+  <style>
+    body {
       margin: 0;
-      overflow: hidden;
       font-family: 'Segoe UI', sans-serif;
       background: black;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      grid-auto-rows: 50px;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      grid-auto-rows: 40px;
       align-items: center;
       justify-items: center;
       height: 100vh;
       position: relative;
-      cursor: pointer;
+      touch-action: manipulation;
     }
 
     .love {
@@ -26,18 +24,13 @@
       color: #ff4da6;
       text-shadow: 0 0 4px #ff4da6;
       transition: transform 0.2s ease;
-      position: relative;
       user-select: none;
       animation: updown 2s ease-in-out infinite;
     }
 
     @keyframes updown {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
 
     .spark {
@@ -53,14 +46,8 @@
     }
 
     @keyframes explode {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(var(--dx), var(--dy)) scale(1.2);
-        opacity: 0;
-      }
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: translate(var(--dx), var(--dy)) scale(1.2); opacity: 0; }
     }
 
     .heart {
@@ -83,21 +70,11 @@
       position: absolute;
     }
 
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-
-    .heart::after {
-      left: 10px;
-      top: 0;
-    }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: 10px; top: 0; }
 
     @keyframes float {
-      to {
-        transform: translateY(-100px) scale(1.5);
-        opacity: 0;
-      }
+      to { transform: translateY(-100px) scale(1.5); opacity: 0; }
     }
 
     .te-amo {
@@ -112,35 +89,28 @@
     }
 
     @keyframes boom {
-      0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(0.5);
-      }
-      50% {
-        transform: translate(-50%, -50%) scale(2);
-      }
-      100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(2.5);
-      }
+      0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+      50% { transform: translate(-50%, -50%) scale(2); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(2.5); }
     }
 
-    /**BARRA DE MENU */
-      /* Barra superior morada */
     .menu-bar {
-     position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #7e3af2;
-  padding: 15px 20px;
-  display: flex;
-  color: white;
-  z-index: 1000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #7e3af2;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      color: white;
+      z-index: 1000;
+      font-size: 14px;
+      justify-content: center;
     }
 
     .menu-bar .tab {
-      margin-right: 20px;
+      margin: 5px 10px;
       cursor: pointer;
       font-weight: bold;
       opacity: 0.9;
@@ -151,88 +121,46 @@
       text-decoration: underline;
     }
 
-    /* Contenedor principal */
-    .settings-panel {
-      padding: 30px 20px;
-      background: white;
-      max-width: 800px;
-      margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+    @media (max-width: 600px) {
+      body {
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+        grid-auto-rows: 30px;
+      }
 
-    .setting {
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+      .te-amo {
+        font-size: 32px;
+      }
 
-    .setting label {
-      font-weight: 500;
-      color: #333;
-    }
+      .menu-bar {
+        font-size: 12px;
+        padding: 5px;
+      }
 
-    /* Botón estilo ACTIVAR/DESACTIVAR */
-    .toggle {
-      background: #00aaff;
-      color: white;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
+      .menu-bar .tab {
+        margin: 4px;
+      }
     }
-
-    .toggle:hover {
-      background: #0088cc;
-    }
-
-    .colors {
-      display: flex;
-      gap: 10px;
-    }
-
-    .color-box {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      border: 2px solid #ccc;
-      cursor: pointer;
-    }
-
-    .color-box.black { background: #000; }
-    .color-box.white { background: #fff; }
-    .color-box.red { background: #f00; }
-    .color-box.orange { background: #f90; }
-    .color-box.yellow { background: #ff0; }
-    .color-box.green { background: #0f0; }
-    .color-box.blue { background: #00f; }
-    .color-box.purple { background: #a0f; }
- </style>
+  </style>
 </head>
 <body>
-<div class="menu-bar">
+  <div class="menu-bar">
     <div class="tab">General</div>
-    <div class="tab">Vehiculos</div>
-    <div class="tab">Creditos Nissan</div>
+    <div class="tab">Vehículos</div>
+    <div class="tab">Créditos Nissan</div>
     <div class="tab">Dueños Nissan</div>
     <div class="tab">Esto es Nissan</div>
-    <div class="tab">Iniciar sesion</div>
+    <div class="tab">Iniciar sesión</div>
     <div class="tab">Katia</div>
     <div class="tab">Fernanda</div>
   </div>
 
- 
-
   <script>
-    // Crear múltiples "My Love"
     const total = 800;
     for (let i = 0; i < total; i++) {
       const el = document.createElement('div');
       el.className = 'love';
       el.textContent = 'Comida';
-      el.style.animationDelay = `${Math.random() * 3}s`; // desfasar movimiento
+      el.style.animationDelay = `${Math.random() * 3}s`;
       el.addEventListener('mouseenter', () => {
         el.style.transform = `scale(1.3)`;
         for (let i = 0; i < 16; i++) {
@@ -252,25 +180,38 @@
       document.body.appendChild(el);
     }
 
-    // Corazones que siguen el mouse
-    document.addEventListener('mousemove', function(e) {
+    function spawnHeart(x, y) {
       const heart = document.createElement('div');
       heart.className = 'heart';
-      heart.style.left = `${e.clientX}px`;
-      heart.style.top = `${e.clientY}px`;
+      heart.style.left = `${x}px`;
+      heart.style.top = `${y}px`;
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 1000);
-    });
+    }
 
-    // Explosión de "TE AMO" al hacer clic
-    document.addEventListener('click', function(e) {
+    function spawnText(x, y) {
       const loveText = document.createElement('div');
       loveText.className = 'te-amo';
       loveText.textContent = 'HAMBRE';
-      loveText.style.left = `${e.clientX}px`;
-      loveText.style.top = `${e.clientY}px`;
+      loveText.style.left = `${x}px`;
+      loveText.style.top = `${y}px`;
       document.body.appendChild(loveText);
       setTimeout(() => loveText.remove(), 1000);
+    }
+
+    // Eventos para mouse
+    document.addEventListener('mousemove', e => spawnHeart(e.clientX, e.clientY));
+    document.addEventListener('click', e => spawnText(e.clientX, e.clientY));
+
+    // Eventos para pantallas táctiles
+    document.addEventListener('touchmove', e => {
+      const touch = e.touches[0];
+      spawnHeart(touch.clientX, touch.clientY);
+    });
+
+    document.addEventListener('touchstart', e => {
+      const touch = e.touches[0];
+      spawnText(touch.clientX, touch.clientY);
     });
   </script>
 </body>
