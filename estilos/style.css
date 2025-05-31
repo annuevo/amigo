@@ -1,0 +1,198 @@
+ body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: black;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      grid-auto-rows: 50px;
+      align-items: center;
+      justify-items: center;
+      height: 100vh;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .love {
+      font-size: 1em;
+      color: #ff4da6;
+      text-shadow: 0 0 4px #ff4da6;
+      transition: transform 0.2s ease;
+      position: relative;
+      user-select: none;
+      animation: updown 2s ease-in-out infinite;
+    }
+
+    @keyframes updown {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .spark {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: #b84dff;
+      border-radius: 50%;
+      opacity: 0.95;
+      pointer-events: none;
+      animation: explode 1s ease-out forwards;
+      box-shadow: 0 0 12px #b84dff;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--dx), var(--dy)) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      background: red;
+      transform: rotate(-45deg);
+      animation: float 1s ease-out forwards;
+      pointer-events: none;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      to {
+        transform: translateY(-100px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .te-amo {
+      position: absolute;
+      color: #ff4d4d;
+      font-size: 64px;
+      font-weight: bold;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0.5);
+      animation: boom 1s ease-out forwards;
+      text-shadow: 0 0 20px #ff4d4d, 0 0 40px #ff4d4d;
+    }
+
+    @keyframes boom {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.5);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(2);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2.5);
+      }
+    }
+
+    /**BARRA DE MENU */
+      /* Barra superior morada */
+    .menu-bar {
+      background-color: #7e3af2; /* Divi morado */
+      padding: 15px 20px;
+      display: flex;
+      color: white;
+    }
+
+    .menu-bar .tab {
+      margin-right: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      opacity: 0.9;
+    }
+
+    .menu-bar .tab:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    /* Contenedor principal */
+    .settings-panel {
+      padding: 30px 20px;
+      background: white;
+      max-width: 800px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .setting {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .setting label {
+      font-weight: 500;
+      color: #333;
+    }
+
+    /* Botón estilo ACTIVAR/DESACTIVAR */
+    .toggle {
+      background: #00aaff;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .toggle:hover {
+      background: #0088cc;
+    }
+
+    .colors {
+      display: flex;
+      gap: 10px;
+    }
+
+    .color-box {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      cursor: pointer;
+    }
+
+    .color-box.black { background: #000; }
+    .color-box.white { background: #fff; }
+    .color-box.red { background: #f00; }
+    .color-box.orange { background: #f90; }
+    .color-box.yellow { background: #ff0; }
+    .color-box.green { background: #0f0; }
+    .color-box.blue { background: #00f; }
+    .color-box.purple { background: #a0f; }
